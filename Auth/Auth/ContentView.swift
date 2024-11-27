@@ -113,6 +113,18 @@ struct ContentView: View {
         }
     }
 
+
+    func register() {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error = error {
+                errorMessage = error.localizedDescription
+            } else {
+                userIsLoggedIn = true
+                errorMessage = ""
+            }
+        }
+    }
+
   
 }
 
